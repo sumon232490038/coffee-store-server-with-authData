@@ -22,8 +22,6 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
-
     // Send a ping to confirm a successful connection
 
     const database = client.db("coffeeDB");
@@ -82,13 +80,11 @@ async function run() {
 
     app.post("/users", async (req, res) => {
       const user = req.body;
-      // console.log(user);
       const result = await usersCollection.insertOne(user);
       res.send(result);
     });
 
     app.patch("/users", async (req, res) => {
-      // const user = req.body;
       const query = { email: req.body.email };
       const docs = {
         $set: {
@@ -120,7 +116,7 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-  res.send("HOT HOT HOT COFFEEEEEEE");
+  res.send("HOT HOT HOT COFFEEEEEEEEEE");
 });
 
 app.listen(port, () => {
